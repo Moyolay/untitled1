@@ -1,5 +1,11 @@
-class cardController {
+const ApiError=require('../error/ApiError')
+const {Card}=require('../models/models')
+
+class CardController {
     async create(req,res) {
+
+
+
 
     }
 
@@ -9,4 +15,4 @@ class cardController {
 
 }
 
-module.exports = new cardController()
+module.exports = new CardController()
