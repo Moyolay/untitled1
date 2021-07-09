@@ -34,6 +34,11 @@ class AgentController {
         return res.json(agents)
 
     }
+    async update(req,res){
+        const agents=await Agent.update({name,phone})
+        return res.json(agents)
+    }
+
 }
 
 module.exports = new AgentController()

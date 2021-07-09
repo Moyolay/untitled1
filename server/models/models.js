@@ -15,7 +15,7 @@ const Agent = sequelize.define('agent',{
 const Sale = sequelize.define('sale',{
     id_sale: {type: DataTypes.INTEGER,primaryKey:true,autoIncrement:true},
     date_sale:{type: DataTypes.DATE,allowNull:false},
-    count:{type: DataTypes.BIGINT,allowNull:false},
+    count:{type: DataTypes.BIGINT,allowNull:false, defaultValue:1},
     date_beging:{type:DataTypes.DATE,allowNull:false},
     expiration_date:{type:DataTypes.DATE,allowNull:false},
     price:{type:DataTypes.INTEGER,allowNull:false}

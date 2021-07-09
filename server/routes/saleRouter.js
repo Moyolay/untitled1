@@ -4,6 +4,6 @@ const saleController=require('../controllers/saleController')
 
 router.post('/', saleController.create)
 router.get('/',saleController.getAll)
-router.get('/',saleController.getOne)
+//router.get('/',saleController.getOne)
 
 module.exports=router
