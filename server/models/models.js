@@ -18,7 +18,7 @@ const Sale = sequelize.define('sale',{
     id_sale: {type: DataTypes.INTEGER,primaryKey:true,autoIncrement:true},
     count:{type: DataTypes.INTEGER,allowNull:false, defaultValue:1},
     expiration_date:{type:DataTypes.DATE,allowNull:false},
-    price:{type:DataTypes.INTEGER,allowNull:false},
+    price:{type:DataTypes.INTEGER,allowNull:false, defaultValue:500},
     first_name:{type: DataTypes.STRING,allowNull:false},
     last_name:{type: DataTypes.STRING,allowNull:false},
     name:{type: DataTypes.STRING,allowNull:false},
@@ -38,8 +38,7 @@ const Car = sequelize.define('car',{
 
 const Card = sequelize.define('card',{
     id_card: {type: DataTypes.INTEGER,primaryKey:true,autoIncrement:true},
-    name:{type: DataTypes.STRING,allowNull:false},
-    number:{type:DataTypes.STRING,allowNull:false}
+    name:{type: DataTypes.STRING,allowNull:false}
 })
 
 Car.hasMany(Sale)
