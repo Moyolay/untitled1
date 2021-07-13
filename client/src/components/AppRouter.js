@@ -6,11 +6,14 @@ import {Context} from "../index";
 
 
 const AppRouter = () => {
-    //const {user} = useContext(Context);
+    const {user} = useContext(Context);
     const isAuth = true;
     return (
         <Switch>
-            {isAuth && AuthRoutes.map(({path, component}) =>
+            {user.isAuth /*&& user.isUser('Admin')*/ && AuthRoutes.map(({path, component}) =>
+                <Route key={path} path={path} component={component} exact/>
+            )}
+            {user.isAuth /*&& user.isUser('Admin')*/ && AuthRoutes.map(({path, component}) =>
                 <Route key={path} path={path} component={component} exact/>
             )}
             {PublicRoutes.map(({path, component}) =>
