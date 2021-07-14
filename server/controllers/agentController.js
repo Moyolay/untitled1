@@ -35,7 +35,7 @@ class AgentController {
 
     }
     async update(req,res){
-        const agents=await Agent.update({name,phone,email,password})
+        const agents=await Agent.update({first_name,last_name,phone,email,password})
         return res.json(agents)
     }
 
