@@ -1,12 +1,12 @@
 const sequelize = require('../db')
 const {DataTypes}=require('sequelize')
 
-const Insurance = sequelize.define('insurance',{
+const Insurances = sequelize.define('insurance',{
     id_insurance: {type: DataTypes.INTEGER,primaryKey:true,autoIncrement:true},
     name:{type: DataTypes.STRING, allowNull:false}
 })
 
-const Agent = sequelize.define('agent',{
+const Agents = sequelize.define('agent',{
     id_agent: {type: DataTypes.INTEGER,primaryKey:true,autoIncrement:true},
     first_name:{type: DataTypes.STRING,allowNull:false},
     last_name:{type: DataTypes.STRING,allowNull:false},
@@ -15,7 +15,7 @@ const Agent = sequelize.define('agent',{
     password:{type:DataTypes.STRING,allowNull:false}
 })
 
-const Sale = sequelize.define('sale',{
+const Sales = sequelize.define('sale',{
     id_sale: {type: DataTypes.INTEGER,primaryKey:true,autoIncrement:true},
     count:{type: DataTypes.INTEGER,allowNull:false, defaultValue:1},
     expiration_date:{type:DataTypes.DATE,allowNull:false},
@@ -29,7 +29,7 @@ const Sale = sequelize.define('sale',{
 })
 
 
-const Car = sequelize.define('car',{
+const Cars = sequelize.define('car',{
     id_car: {type: DataTypes.INTEGER,primaryKey:true,autoIncrement:true},
     brand:{type: DataTypes.STRING,allowNull:false},
     model:{type: DataTypes.STRING,allowNull:false},
@@ -37,24 +37,33 @@ const Car = sequelize.define('car',{
     gos_number:{type: DataTypes.STRING}
 })
 
-const Card = sequelize.define('card',{
+const Cards = sequelize.define('card',{
     id_card: {type: DataTypes.INTEGER,primaryKey:true,autoIncrement:true},
     name:{type: DataTypes.STRING,allowNull:false}
 })
 
-Car.hasMany(Sale)
-Sale.belongsTo(Car)
+const Users = sequelize.define('users',{
+    id_user: {type: DataTypes.INTEGER, primaryKey:true, autoIncrement:true},
+    email:{type:DataTypes.STRING,unique:true,allowNull:false},
+    password:{type:DataTypes.STRING,allowNull:false}
+})
 
-Insurance.hasMany(Sale)
-Sale.belongsTo(Insurance)
+Cars.hasMany(Sales)
+Sales.belongsTo(Cars)
 
-Agent.hasMany(Sale)
-Sale.belongsTo(Agent)
+Insurances.hasMany(Sales)
+Sales.belongsTo(Insurances)
 
-Card.hasMany(Sale)
-Sale.belongsTo(Card)
+Agents.hasMany(Sales)
+Sales.belongsTo(Agents)
+
+Cards.hasMany(Sales)
+Sales.belongsTo(Cards)
+
+Users.hasMany(Agents)
+Agents.belongsTo(Users)
 
 
 module.exports ={
-    Insurance, Agent, Sale, Card, Car
+    Insurances, Agents, Sales, Cards, Cars, Users
 }

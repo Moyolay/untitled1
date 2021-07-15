@@ -1,22 +1,7 @@
 const ApiError=require('../error/ApiError')
 const {Agent} = require('../models/models')
 class AgentController {
-    /*async registration(req,res) {
 
-    }
-
-    async login(req,res) {
-
-    }
-
-    async check(req,res,next) {
-        const {id} = req.query
-        if (!id) {
-            return next(ApiError.badRequest('Не задан ID'))
-        }
-        res.json(id)
-
-    }*/
     async create(req,res, next){
         try {
             const {name,phone} = req.body
