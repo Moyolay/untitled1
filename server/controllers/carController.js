@@ -18,7 +18,5 @@ class CarController {
         return res.json(cars)
 
     }
-
 }
-
 module.exports = new CarController()
